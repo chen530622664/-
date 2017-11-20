@@ -1,0 +1,109 @@
+<view class='nav'>
+  <text class='{{curNum == index ? "cur" : ""}}'
+    data-navindex="{{index}}"
+    wx:for="{{nav}}"
+    bindtap='tabnav'
+    >{{item}}</text>
+</view>
+
+
+<!-- 推荐 -->
+<view class='tuijian' hidden="{{curNum !== 0}}">
+  <view class='banner'>
+      <swiper
+      indicator-dots="true"
+      autoplay="1"
+      >
+        <swiper-item wx:for="{{indexdata.slider}}">
+          <image src='{{item.picUrl}}'></image>
+        </swiper-item>
+      </swiper>
+  </view>
+
+  <view class='container'>
+    <view class='f1 main'>
+      <view class='title'>电台</view>
+      <view class='warp'>
+        <view class='item' wx:for="{{indexdata.radioList}}">
+          <image src='{{item.picUrl}}'></image>
+          <text class='text'>{{item.Ftitle}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class='f2 main'>
+      <view class='title'>电台</view>
+      <view class='warp'>
+        <view class='item' wx:for="{{indexdata.songList}}">
+          <image src='{{item.picUrl}}'></image>
+          <text class='text'>{{item.songListDesc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 排行榜 -->
+ <view class='toplist' hidden="{{curNum !== 1}}">
+  <view class='warp'>
+    <view class='item' wx:for="{{topList}}">
+      <image src='{{item.picUrl}}'></image>
+      <view class='left'>
+        <text class='title'>我是标题</text>
+        <view class='left-warp' wx:for="{{item.songList}}">
+          <text class='fbiao'>{{index+1}}</text>
+          <text>{{item.songname}}</text>
+          <text class='fbiao'>- {{item.singername}}</text>
+        </view>
+      </view>
+      <text class='arow fbiao'>></text>
+    </view>
+    <view class='item'>
+      <image src='https://y.gtimg.cn/music/common/upload/iphone_order_channel/toplist_4_300_209139931.jpg?max_age=2592000'></image>
+      <view class='left'>
+        <text class='title'>我是标题</text>
+        <view class='left-warp'>
+          <text class='fbiao'>1</text>
+          <text>我先杀妲己</text>
+          <text class='fbiao'>- 毛不易</text>
+        </view>
+      </view>
+      <text class='arow fbiao'>></text>
+    </view>
+  </view>
+</view>
+
+<!-- 搜索 -->
+<view class='search' hidden="{{curNum !== 2}}">
+  <view class='b1'>
+      <!-- <image src='/images/1.png'></image> -->
+      <icon type="search" size='18'/>
+      <input bindinput="getsearchVal" bindfocus="getfoucus" 
+       bindconfirm="searchSubmit" class="input" placeholder="搜索歌单、歌曲、专辑" />
+  </view>
+
+  <!--  1.input获取焦点  2.input有输入 -->
+  <view class='content' hidden='{{serchVal || foucus}}'> 
+    <view class='suiji'>
+      <view class='resou'>热门搜索</view>
+      <view class='wa' wx:for="{{searchHotKey}}">{{item.k}}</view>
+    </view>
+  </view>
+
+  <!--搜索结果     1.只要返回了搜索结果我们显示 -->
+  <view class='result' hidden='{{!searchList}}'>
+    <scroll-view>
+      <text bindtap='openPlaysong' style='padding: 20rpx 20rpx;' class='item' data-playid="{{index}}" wx:for="{{searchList}}">{{item.albumname}}</text>
+    </scroll-view>
+  </view>
+
+  <!--搜索记录   1.当有搜索结果的时候我就消失 2.没有获焦点  -->
+  <view class='result store' hidden='{{searchList || !foucus}}'>
+      <view class='item' wx:for="{{searchstort}}">
+        <text data-value="{{item}}" bindtap='storeSearchreSult'>{{item}}</text>
+        <text data-storeId="{{index}}" bindtap='clolseStore'>x</text>
+      </view>
+  </view>
+
+  <!--想写的完美，你就弄一个失去焦点  -->
+</view> 

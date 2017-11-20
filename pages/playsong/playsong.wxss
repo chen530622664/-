@@ -1,0 +1,69 @@
+/* pages/playsong/playsong.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background: #ccc;
+}
+.body{
+   width: 100%;
+  height: 100%;
+  
+}
+.body .heder {
+  display: flex;
+  padding: 20rpx 20rpx;
+}
+
+.body .heder .detail text{
+  display: block
+}
+.body .heder .detail{
+  flex: auto;
+}
+.body .heder .tupin{
+  width: 120rpx;
+  height: 120rpx;
+}
+.body .heder .play{
+  width: 90rpx;
+  height: 90rpx;
+  float: right;
+}
+.lyic scroll-view{
+  height: 600rpx;
+}
+.lyic scroll-view .text{
+  padding: 20rpx 50px;
+  display: block;
+}
+.jdt{
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  font-size:0rpx;
+}
+.jdt .text{
+  font-size: 28rpx;
+  color: #666;
+}
+.jdt .text.current{
+  margin-right: 10rpx;
+}
+.jdt .text.end{
+  margin-left: 10rpx;
+}
+.jdt .bar-yeye{
+  flex: auto;
+  height:50rpx;
+}
+.jdt .bar{
+  width:100%;
+  height: 5rpx;
+  background: blue;
+  margin-top:23rpx;
+}
+.jdt .bar .bar-child{
+  width: 0%;
+  height: 100%;
+  background: red;
+}
